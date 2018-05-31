@@ -1,0 +1,24 @@
+{
+  "name": "drum-machine",
+  "version": "1.0.0",
+  "description": "javascript drum machine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chazmcgrill/drum-machine.git"
+  },
+  "keywords": [
+    "drum",
+    "machine",
+    "js"
+  ],
+  "author": "Charlie Taylor <mail@charlietaylorcoder.com> (https://charlietaylorcoder.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chazmcgrill/drum-machine/issues"
+  },
+  "homepage": "https://github.com/chazmcgrill/drum-machine#readme"
+}
