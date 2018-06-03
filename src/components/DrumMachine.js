@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import DrumPads from './DrumPads';
 
 class DrumMachine extends Component {
   render() {
-    return <div>Working!</div>;
+    return <DrumPads />;
   }
 }
 
