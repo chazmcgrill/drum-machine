@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DrumPads from './DrumPads';
+import DrumPads from './Pads';
 
 class DrumMachine extends Component {
   render() {
