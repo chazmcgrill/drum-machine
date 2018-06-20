@@ -2,15 +2,15 @@ import React from 'react';
 import Pad from './Pad';
 
 const padsDS = [
-  { id: 0, active: false },
-  { id: 1, active: false },
-  { id: 2, active: false },
-  { id: 3, active: false },
-  { id: 4, active: false },
-  { id: 5, active: false },
-  { id: 6, active: false },
-  { id: 7, active: false },
-  { id: 8, active: false }
+  { id: "Q", active: false },
+  { id: "W", active: false },
+  { id: "E", active: false },
+  { id: "A", active: false },
+  { id: "S", active: false },
+  { id: "D", active: false },
+  { id: "Z", active: false },
+  { id: "X", active: false },
+  { id: "C", active: false }
 ]
 
 const DrumPads = () => {
