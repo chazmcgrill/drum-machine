@@ -1,5 +1,5 @@
 import React from 'react';
-import Pad from './Pad';
+import DrumPad from './DrumPad';
 
 const padsDS = [
   { id: "Q", active: false },
@@ -16,7 +16,7 @@ const padsDS = [
 const DrumPads = () => {
   return (
     <div className="pad-box">
-      {padsDS.map(p => <Pad key={p.id} padData={p}/>)}
+      {padsDS.map(p => <DrumPad key={p.id} padData={p}/>)}
     </div>
   )
 }

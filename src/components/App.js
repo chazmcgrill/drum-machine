@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import DrumPads from './Pads';
+import DrumPads from './DrumPads';
 
-class DrumMachine extends Component {
+class App extends Component {
   render() {
     return (
-      <div id="drum-machine">
+      <div id="app">
         <DrumPads />
         <div>
           <div id="display">display</div>
@@ -16,4 +16,4 @@ class DrumMachine extends Component {
   }
 }
 
-export default DrumMachine;
+export default App;

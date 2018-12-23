@@ -1,6 +1,9 @@
 import React from 'react';
-import { render } from 'react-dom';
-import DrumMachine from './components/DrumMachine';
-import './styles/main.sass';
+import ReactDOM from 'react-dom';
+import './index.sass';
+import App from './components/App';
+import * as serviceWorker from './serviceWorker';
 
-render(<DrumMachine />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
+
+serviceWorker.unregister();
