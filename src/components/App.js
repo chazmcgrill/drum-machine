@@ -1,19 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import DrumPads from './DrumPads';
 
-class App extends Component {
-  render() {
-    return (
-      <div id="app">
+export default () => (
+    <div id="app">
         <DrumPads />
         <div>
-          <div id="display">display</div>
-          <div className="dials">dials</div>
-          <div className="buttons">buttons</div>
+            <div id="display">display</div>
+            <div className="dials">dials</div>
+            <div className="buttons">buttons</div>
         </div>
-      </div>
-    );
-  }
-}
-
-export default App;
+    </div>
+);
