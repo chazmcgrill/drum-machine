@@ -1,0 +1,26 @@
+.switch-wrapper
+    display: flex
+    align-items: center
+
+.switch
+    width: 50px
+    height: 25px
+    border: 3px solid black
+    border-radius: 25px
+    background: lighten(black, 70%)
+    position: relative
+    outline: none
+    cursor: pointer
+    margin: 0 10px
+
+    &_inner
+        width: 25px
+        height: 25px
+        background: white
+        border-radius: 25px
+        position: absolute
+        transition: all 0.3s ease-in-out
+        top: 0
+
+    &_tag
+        font-size: 0.8rem
