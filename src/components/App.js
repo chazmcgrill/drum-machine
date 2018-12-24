@@ -11,6 +11,17 @@ class App extends Component {
         powerOn: false,
         volume: 94,
         display: 'Power: Off',
+        pads: [
+            { id: 'Q', active: false },
+            { id: 'W', active: false },
+            { id: 'E', active: false },
+            { id: 'A', active: false },
+            { id: 'S', active: false },
+            { id: 'D', active: false },
+            { id: 'Z', active: false },
+            { id: 'X', active: false },
+            { id: 'C', active: false },
+        ],
     }
 
     handlePowerClick = () => {
@@ -29,11 +40,28 @@ class App extends Component {
         });
     }
 
+    handlePadClick = (id) => {
+        const { pads } = this.state;
+        const newPads = pads.map(pad => (
+            pad.id === id ? { ...pad, active: true } : pad
+        ));
+        this.setState({ pads: newPads });
+        setTimeout(() => {
+            this.setState({ pads });
+        }, 500);
+    }
+
     render() {
-        const { powerOn, volume, display } = this.state;
+        const {
+            powerOn,
+            volume,
+            display,
+            pads,
+        } = this.state;
+
         return (
             <div className="drum-machine-wrapper">
-                <DrumPads />
+                <DrumPads handlePadClick={this.handlePadClick} pads={pads} />
                 <div>
                     <Display message={display} />
                     <div className="dial-container">
