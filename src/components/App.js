@@ -4,6 +4,7 @@ import Switch from './Switch';
 import Display from './Display';
 import './App.sass';
 import Dial from './Dial';
+import Slider from './Slider';
 
 class App extends Component {
     state = {
@@ -27,7 +28,7 @@ class App extends Component {
                         <Dial label="treble" />
                         <Dial label="tone" />
                     </div>
-                    <div className="buttons">buttons</div>
+                    <Slider />
                     <Switch handlePowerClick={this.handlePowerClick} powerOn={powerOn} />
                 </div>
             </div>
