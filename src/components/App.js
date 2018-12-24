@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import DrumPads from './DrumPads';
 import Switch from './Switch';
+import Display from './Display';
+import './App.sass';
 
 class App extends Component {
     state = {
@@ -15,10 +17,10 @@ class App extends Component {
     render() {
         const { powerOn } = this.state;
         return (
-            <div id="app">
+            <div className="drum-machine-wrapper">
                 <DrumPads />
                 <div>
-                    <div id="display">display</div>
+                    <Display />
                     <Switch handlePowerClick={this.handlePowerClick} powerOn={powerOn} />
                     <div className="dials">dials</div>
                     <div className="buttons">buttons</div>

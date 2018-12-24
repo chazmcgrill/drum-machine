@@ -1,5 +1,6 @@
 import React from 'react';
 import DrumPad from './DrumPad';
+import './DrumPads.sass';
 
 const padsDS = [
     { id: 'Q', active: false },
