@@ -9,26 +9,39 @@ import Slider from './Slider';
 class App extends Component {
     state = {
         powerOn: false,
+        volume: 94,
+        display: 'Power: Off',
     }
 
     handlePowerClick = () => {
         const { powerOn } = this.state;
-        this.setState({ powerOn: !powerOn });
+        this.setState({
+            powerOn: !powerOn,
+            display: `Power: ${powerOn ? 'Off' : 'On'}`,
+        });
+    }
+
+    handleVolumeChange = (e) => {
+        const volume = parseInt(e.target.value, 10);
+        this.setState({
+            volume,
+            display: `Volume: ${volume}`,
+        });
     }
 
     render() {
-        const { powerOn } = this.state;
+        const { powerOn, volume, display } = this.state;
         return (
             <div className="drum-machine-wrapper">
                 <DrumPads />
                 <div>
-                    <Display />
+                    <Display message={display} />
                     <div className="dial-container">
                         <Dial label="bass" />
                         <Dial label="treble" />
                         <Dial label="tone" />
                     </div>
-                    <Slider />
+                    <Slider volume={volume} handleVolumeChange={this.handleVolumeChange} />
                     <Switch handlePowerClick={this.handlePowerClick} powerOn={powerOn} />
                 </div>
             </div>
