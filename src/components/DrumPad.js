@@ -4,7 +4,7 @@ import './DrumPad.sass';
 const Pad = ({ padData, handlePadClick }) => (
     <div
         className="pad"
-        onClick={() => handlePadClick(padData.id)}
+        onClick={() => handlePadClick(padData.id, padData.name)}
         role="button"
         tabIndex="0"
         style={{
