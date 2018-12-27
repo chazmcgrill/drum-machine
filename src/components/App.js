@@ -64,9 +64,10 @@ class App extends Component {
     }
 
     playAudio = (id) => {
-        const { pads } = this.state;
+        const { pads, volume } = this.state;
         const { sound } = pads.find(element => id === element.id);
         const audio = new Audio(sound);
+        audio.volume = volume / 100;
         audio.play();
     }
 
