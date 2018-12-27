@@ -5,27 +5,22 @@ import Display from './Display';
 import './App.sass';
 import Dial from './Dial';
 import Slider from './Slider';
+import PADS from '../globals/pads';
 
 class App extends Component {
     state = {
         powerOn: false,
         volume: 94,
         display: 'Power: Off',
-        pads: [
-            { id: 'Q', active: false, name: 'high-hat' },
-            { id: 'W', active: false, name: 'kick-drum' },
-            { id: 'E', active: false, name: 'floor-tom' },
-            { id: 'A', active: false, name: 'clash' },
-            { id: 'S', active: false, name: 'ride' },
-            { id: 'D', active: false, name: 'cow-bell' },
-            { id: 'Z', active: false, name: 'mid-tom' },
-            { id: 'X', active: false, name: 'clap' },
-            { id: 'C', active: false, name: 'snare' },
-        ],
         loadingPad: false,
+        pads: [],
     }
 
     timer = null;
+
+    componentDidMount() {
+        this.setState({ pads: PADS });
+    }
 
     componentWillUnmount() {
         if (this.timer) {
@@ -50,18 +45,30 @@ class App extends Component {
     }
 
     handlePadClick = (id, padName) => {
-        const { pads, loadingPad, powerOn } = this.state;
+        const { loadingPad, powerOn } = this.state;
         if (!loadingPad && powerOn) {
-            const newPads = pads.map(pad => (
-                pad.id === id ? { ...pad, active: true } : pad
-            ));
-            this.setState({ pads: newPads, display: padName, loadingPad: true });
-            this.timer = setTimeout(() => {
-                this.setState({ pads, display: '', loadingPad: false });
-            }, 300);
+            this.playAudio(id);
+            this.lightUpDrumPad(id, padName);
         }
     }
 
+    lightUpDrumPad = (id, padName) => {
+        const { pads } = this.state;
+        const newPads = pads.map(pad => (
+            pad.id === id ? { ...pad, active: true } : pad
+        ));
+        this.setState({ pads: newPads, display: padName, loadingPad: true });
+        this.timer = setTimeout(() => {
+            this.setState({ pads, display: '', loadingPad: false });
+        }, 300);
+    }
+
+    playAudio = (id) => {
+        const { pads } = this.state;
+        const { sound } = pads.find(element => id === element.id);
+        const audio = new Audio(sound);
+        audio.play();
+    }
 
     render() {
         const {
