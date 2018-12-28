@@ -42,6 +42,7 @@
         "class-methods-use-this": "off",
         "no-underscore-dangle": "off",
         "linebreak-style": "off",
+        "jsx-a11y/media-has-caption": "off",
         "no-mixed-operators": [
             "error",
             {

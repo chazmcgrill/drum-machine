@@ -7,11 +7,13 @@ import Dial from './Dial';
 import Slider from './Slider';
 import PADS from '../globals/pads';
 
+const keyCodes = [81, 87, 69, 65, 83, 68, 90, 88, 67];
+
 class App extends Component {
     state = {
         powerOn: false,
         volume: 94,
-        display: 'Power: Off',
+        display: 'power: off',
         loadingPad: false,
         pads: [],
     }
@@ -19,12 +21,25 @@ class App extends Component {
     timer = null;
 
     componentDidMount() {
+        window.addEventListener('keydown', this.handleKeyDown);
         this.setState({ pads: PADS });
     }
 
     componentWillUnmount() {
+        window.removeEventListener('keydown', this.handleKeyDown);
         if (this.timer) {
             clearTimeout(this.timer);
+        }
+    }
+
+    handleKeyDown = (event) => {
+        const { keyCode } = event;
+        if (keyCodes.includes(keyCode)) {
+            const { pads } = this.state;
+            const id = String.fromCharCode(keyCode);
+            const { name } = pads.find(pad => pad.id === id);
+            this.playAudio(id);
+            this.lightUpDrumPad(id, name);
         }
     }
 
@@ -32,7 +47,7 @@ class App extends Component {
         const { powerOn } = this.state;
         this.setState({
             powerOn: !powerOn,
-            display: `Power: ${powerOn ? 'Off' : 'On'}`,
+            display: `power: ${powerOn ? 'off' : 'on'}`,
         });
     }
 
@@ -40,7 +55,7 @@ class App extends Component {
         const volume = parseInt(e.target.value, 10);
         this.setState({
             volume,
-            display: `Volume: ${volume}`,
+            display: `volume: ${volume}`,
         });
     }
 
@@ -54,10 +69,11 @@ class App extends Component {
 
     lightUpDrumPad = (id, padName) => {
         const { pads } = this.state;
+        const display = padName.replace('-', ' ');
         const newPads = pads.map(pad => (
             pad.id === id ? { ...pad, active: true } : pad
         ));
-        this.setState({ pads: newPads, display: padName, loadingPad: true });
+        this.setState({ pads: newPads, display, loadingPad: true });
         this.timer = setTimeout(() => {
             this.setState({ pads, display: '', loadingPad: false });
         }, 300);
