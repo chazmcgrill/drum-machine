@@ -13,8 +13,9 @@ class DrumPads extends React.Component {
     }
 
     handleKeyDown = (event) => {
+        const { powerOn } = this.props;
         const { keyCode } = event;
-        if (keyCodes.includes(keyCode)) {
+        if (keyCodes.includes(keyCode) && powerOn) {
             const { pads, lightUpDrumPad } = this.props;
             const id = String.fromCharCode(keyCode);
             const { name } = pads.find(pad => pad.id === id);

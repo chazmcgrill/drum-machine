@@ -12,7 +12,6 @@ class App extends Component {
         powerOn: false,
         volume: 94,
         display: 'power: off',
-        loadingPad: false,
         pads: [],
     }
 
@@ -42,23 +41,15 @@ class App extends Component {
         });
     }
 
-    handlePadClick = (id, padName) => {
-        const { loadingPad, powerOn } = this.state;
-        if (!loadingPad && !powerOn) {
-            this.playAudio(id);
-            this.lightUpDrumPad(id, padName);
-        }
-    }
-
     lightUpDrumPad = (id, padName) => {
         const { pads } = this.state;
         const display = padName.replace('-', ' ');
         const newPads = pads.map(pad => (
             pad.id === id ? { ...pad, active: true } : pad
         ));
-        this.setState({ pads: newPads, display, loadingPad: true });
+        this.setState({ pads: newPads, display });
         this.timer = setTimeout(() => {
-            this.setState({ pads, display: '', loadingPad: false });
+            this.setState({ pads: PADS, display: '' });
         }, 300);
     }
 
