@@ -1,7 +1,7 @@
 import React from 'react';
 import './DrumPad.sass';
 
-const Pad = ({ padData, handlePadClick }) => (
+const Pad = ({ padData, forwardedRef, handlePadClick }) => (
     <div
         className="drum-pad"
         onClick={() => handlePadClick(padData.id, padData.name)}
@@ -12,7 +12,13 @@ const Pad = ({ padData, handlePadClick }) => (
             backgroundColor: padData.active ? '#51EBF5' : '#46C0C8',
         }}
     >
-        {/* <audio src={padData.sound} className="clip" id={padData.id} autoPlay={false} /> */}
+        <audio
+            ref={forwardedRef}
+            src={padData.sound}
+            className="clip"
+            id={padData.id}
+            autoPlay={false}
+        />
         {padData.id}
     </div>
 );

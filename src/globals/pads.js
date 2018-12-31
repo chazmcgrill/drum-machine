@@ -1,12 +1,12 @@
-import soundSD from '../sounds/E808_SD-01.wav';
-import soundCP from '../sounds/E808_CP-01.wav';
-import soundOH from '../sounds/E808_OH-01.wav';
-import soundKD from '../sounds/E808_BD-01.wav';
-import soundFT from '../sounds/E808_LT-01.wav';
-import soundRS from '../sounds/E808_RS-01.wav';
-import soundHC from '../sounds/E808_HC-01.wav';
-import soundCB from '../sounds/E808_CB-01.wav';
-import soundMT from '../sounds/E808_MT-01.wav';
+import soundSD from '../sounds/SD.mp3';
+import soundCP from '../sounds/CP.mp3';
+import soundOH from '../sounds/OH.mp3';
+import soundKD from '../sounds/BD.mp3';
+import soundFT from '../sounds/LT.mp3';
+import soundRS from '../sounds/RS.mp3';
+import soundHC from '../sounds/HC.mp3';
+import soundCB from '../sounds/CB.mp3';
+import soundMT from '../sounds/MT.mp3';
 
 export default [
     {
